@@ -2,6 +2,10 @@
 
 > **Experimental modification. Use at your own risk.** No warranty or support claims are accepted for this modification.
 
+## Acknowledgements
+
+A special thank you to Thomas Bronwyn Phillips for all his discoveries and for the help he has provided throughout this project.
+
 ## 1. What the HTML does
 
 `Custom_Firmware_0.1.html` is a browser-based firmware configurator. Open it on a computer, select a GP-200 firmware BIN, choose and configure MODs, then generate a ZIP containing the modified firmware and any accompanying files. The HTML itself is not installed on the pedal; the BIN inside the ZIP is the firmware image to install.
