@@ -1,6 +1,7 @@
-# Custom_Firmware_0.1 — GP-200 README
+# Custom_Firmware_0.2 — GP-200 README
 
-> **Experimental modification. Use at your own risk.** No warranty or support claims are accepted for this modification.
+> **Experimental modification.**
+>Please be aware this is expermimental and in beta. It shouldn't harm you GP200 but please use at you own risk.
 
 ## Acknowledgements
 
@@ -8,22 +9,23 @@ A special thank you to Thomas Bronwyn Phillips for all his discoveries and for t
 
 ## 1. What the HTML does
 
-`Custom_Firmware_0.1.html` is a browser-based firmware configurator. Open it on a computer, select a GP-200 firmware BIN, choose and configure MODs, then generate a ZIP containing the modified firmware and any accompanying files. The HTML itself is not installed on the pedal; the BIN inside the ZIP is the firmware image to install.
+`Custom_Firmware_0.2.html` is a browser-based firmware configurator. Open it on a computer, select a GP-200 firmware BIN, choose and configure MODs, then generate a ZIP containing the modified firmware and any accompanying files. The HTML itself is not installed on the pedal; the BIN inside the ZIP is the firmware image to install.
 
-- The generator supports GP-200 firmware versions **1.8.0 and 1.8.2**. Use a BIN that matches the firmware profile you intend to prepare.
+- The generator supports GP-200 firmware versions **1.8.0 and 1.8.2** and modified firmwares. Use a BIN that matches the firmware profile you intend to prepare.
 - The generator may recognize and preserve certain existing MODs. If it reports an unrecognized, partial, or incompatible image, stop and check the BIN; do not force the operation.
-- The CHAIN MOD changes the GP-200 firmware interface. **CHAIN can only be edited on the GP-200** and does not require official-editor file replacement.
+- The CHAIN MOD changes the GP-200 firmware interface. **CHAIN can only be edited on the GP-200** it is not supported by the official editor. A new editor is WIP.
 
 ## 2. Before you start
 
-- Prepare source files in advance: mono WAV files for CAB IRs and compatible CLO/Sound Clone files for AMP replacements.
+- Prepare source files you may need in advance: mono WAV files for CAB IRs and compatible CLO/Sound Clone files for AMP replacements.
+- You can get a nam to clo converter here https://github.com/Goaltoday/NamtoClo/releases#release-TONE3000
 - Use a desktop browser and keep the downloaded ZIP intact until you have read its manifest and contents.
 - Back up your presets.
 - Back up the official editor files before replacing any of them.
 
 ## 3. Open the HTML and load a BIN
 
-1. Make sure the generator file is named `Custom_Firmware_0.1.html`.
+1. Make sure the generator file is named `Custom_Firmware_0.2.html`.
 2. Open it in a desktop browser, by double-clicking the file or using the browser’s **Open File** command. Do not open it in a text editor to run it.
 3. Under **Load your firmware BIN**, select the `.bin` for the profile you intend to use.
 4. Wait for the compatibility check. MOD controls become available after a recognized image is loaded. If the page reports an incompatible or unrecognized BIN, stop and verify the file and profile.
@@ -33,43 +35,64 @@ The generator processes the selected firmware in the browser and checks the imag
 
 ## 4. Configure the MODs
 
-### 4.1 Factory CAB → Custom IR
+### 4.1 **Replace Factory CAB and AMP**
 
-Open **Replace Factory CAB and AMP**, then **Configure CAB and AMP**. The list contains 70 Factory CAB destinations. For each CAB to replace:
+- **Factory CAB → Custom IR**
 
-- Select a mono WAV at **44.1 kHz**. The generator writes the IR as **1024 samples**.
-- Optionally enter a display name, up to **12 ASCII characters**.
-- Check that the file and name appear on the intended CAB row.
+Open **Replace Factory CAB and AMP**, then **Configure CAB and AMP**. The list contains all 70 Factory CAB destinations. For each CAB to replace:
+
+    - Select a mono WAV at **44.1 kHz**. The generator writes the IR as **1024 samples**.
+    - Optionally enter a display name, up to **12 ASCII characters**.
+    - Check that the file and name appear on the intended CAB row.
 
 A replacement is associated with the Factory CAB slot, so presets using that slot will use the replacement IR.
 
-### 4.2 Factory AMP → SnapTone/CLO
+- **Factory AMP → SnapTone/CLO(Up to 18 new snaptones)**
 
-In the same section, select a Factory AMP destination, choose its compatible Sound Clone/CLO file, enter a display name if desired, then click **Add Sound Clone**. Any of the 71 Factory AMP destinations can be selected, up to a total of **18 replacements** in one build.
+In the same section, select a Factory AMP destination, choose its compatible Sound Clone/CLO file, enter a display name if desired, then click **Add Sound Clone**. Any of the 71 Factory AMP destinations can be selected, up to a total of **18 replacements** in one build (I will try to increase that number)
 
-- AMP models not selected keep their original sound.
-- Follow the character limit shown on the page for the display name.
-- Model slots use PCM sample regions associated with Drum Machine banks that the firmware identifies as unused. The Drum Machine routine is retained, but pattern preservation still needs confirmation on the pedal.
-
-### 4.3 Effects on the PRE block
-
-Enable **Load effects on PRE Block** and open **Configure PRE effects**. The page offers 15 PRE assignments. For each slot, choose a compatible replacement from its list or keep the original effect.
-
-- Each list is limited to effects supported by that slot.
-- Delay and Reverb choices are marked experimental in the configurator.
-- The MOD reuses existing PRE packages and does not reserve a new model bank.
-
-### 4.4 DUAL CHAIN · parallel routing
+    - AMP models not selected keep their original sound.
+    - Follow the character limit shown on the page for the display name.
+    - Model slots use PCM sample regions associated with Drum Machine banks that the firmware identifies as unused.
+   
+### 4.2 DUAL CHAIN · parallel routing
 
 Enable **DUAL CHAIN** to add two signal paths, A and B, with a BLEND control. All DUAL CHAIN operation and editing described here take place on the GP-200:
 
-1. On the GP-200, open **FX Loop** and select **CHAIN** to use parallel routing.
-2. To change the effect order, press and hold **PARAM** on an effect, then use the pedal’s native reorder workflow.
-3. On the CHAIN screen, press **GLOBAL** to switch to the page containing **BLEND**, **ALIGN**, and **Ø B**. PARAM remains the parameter-edit control.
-4. ALIGN ranges from **−32 to +32 samples** in one-sample steps. Positive values delay path A; negative values delay path B. Adjust it while listening.
-5. Ø B inverts path B polarity. BLEND sets the balance between A and B.
+1. On the GP-200, open **FX Loop** menu and select **CHAIN** to use parallel routing (rotate the knob bellow SERIES or PARALLEL).
+  
+<img width="960" height="544" alt="CHAIN" src="https://github.com/user-attachments/assets/8c149a10-41b5-4bb0-94ab-26479baccfb0" />
 
-> **CHAIN boundary:** Do not replace official-editor files for CHAIN. CHAIN routing and its BLEND, ALIGN, and polarity settings are edited on the GP-200 itself.
+3. To change the effect order, press and hold **PARAM** on an effect, then use the pedal’s native reorder workflow.
+4. On the CHAIN screen, press **GLOBAL** to switch to the page containing **BLEND**, **ALIGN**, and **Ø B**. PARAM remains the parameter-edit control.
+5. ALIGN ranges from **−32 to +32 samples** in one-sample steps. Positive values delay path A; negative values delay path B. Adjust it while listening.
+6. Ø B inverts path B polarity. BLEND sets the balance between A and B.
+
+### 4.3 SCENES
+
+Scenes allows to store four snapshots/scenes, A–D, for the current preset. 
+
+1. On the GP-200, open Footswich menu and rotate the PARAM knob, after user mode SCENE mode will apear.
+
+<img width="960" height="544" alt="USER" src="https://github.com/user-attachments/assets/3bebd21a-444d-4788-8a83-7c7f3f4dc171" />
+
+2. You can personalice FS1 to FS4 as usual, FS5 to FS8 are reserved.
+- Select and configure a preset.
+- On the pedal, FS5–FS8 select Scenes A–D. To capture the current sound into the selected Scene, hold FS4 and press its Scene footswitch (FS5–FS8). The four Scene LEDs flash for about 500 ms when the capture completes, then return to showing the active Scene.
+- Then to store pressing **SAVE** on the GP200.
+- You can change an effect or the chain from any Scene. When you STORE the preset, parameters for replaced blocks are applied across A–D. Unchanged blocks and each Scene’s individual ON/OFF states are preserved.
+
+### 4.4 Effect assignments
+
+The effect assignment tools let you choose an algorithm for a supported destination in WAH, PRE, DIST, or EQ. **Load effects on PRE Block** provides the earlier PRE assignments; the expanded **Effect assignments** configurator adds a destination and algorithm selector for the wider catalog.
+
+- The configurator covers 80 physical destinations: 5 WAH, 31 PRE, 38 DIST, and 6 EQ. The catalog contains many destination/algorithm combinations, but these are options to test, not individually certified combinations. Use the GP-200 controls to configure and evaluate them.
+- A destination is an existing slot in a native block. Each physical block runs one algorithm at a time; multiple PRE destinations are alternatives and do not create additional PRE blocks.
+- WAH Hammy and DIST SnapTone destinations are protected. Delay and reverb recipes are available only on their original PRE destinations. Some options, including the Pure 4000 ms recipe, remain experimental.
+- Existing presets keep their stored parameter values when you replace an effect. Select another effect and return to the replacement if you need to initialize its defaults.
+- The G-Chorus cold-start correction applies only to G-Chorus assigned to DIST Green OD. It runs the effect’s original initializer before the first active audio after loading; this remains an experimental, narrowly scoped correction.
+- Expanded PRE configurations that do not fit the editor’s existing automatic metadata format use the exported `GP200_EFFECT_BANK.json`. Keep that file with the generated package.
+- The VST does not yet interpret generic WAH/DIST/EQ effect assignments.
 
 ## 5. Replace official-editor files for CAB, AMP, and PRE
 
@@ -91,12 +114,7 @@ Some generated ZIPs include replacement resources for the official GP-200 editor
 4. Install the generated BIN using Valeton’s official GP-200 firmware update procedure for the matching firmware version.
 5. Do not disconnect or interrupt the pedal during the firmware update. Afterward, confirm that it starts normally and test each selected MOD.
 
-## 7. Basic post-install checks
+**Have fun and please send me all your bugs and ideas**
 
-| MOD | Check on the GP-200 |
-|---|---|
-| CAB / IR | Open a preset using the replaced CAB; check its name and listen. |
-| AMP / CLO | Check the destination, name, and sound; then check Drum Machine operation and patterns. |
-| PRE | Check the selected effect, its parameters, and bypass. |
-| DUAL CHAIN | Check CHAIN, effect order, A/B paths, GLOBAL/PARAM, BLEND, ALIGN, Ø B, tap tempo, preset changes, and restart. |
+
 
