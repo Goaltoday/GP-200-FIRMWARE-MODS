@@ -14,6 +14,7 @@ A special thank you to Thomas Bronwyn Phillips for all his discoveries and for t
 - The generator supports GP-200 firmware versions **1.8.0 and 1.8.2** and modified firmwares. Use a BIN that matches the firmware profile you intend to prepare.
 - The generator may recognize and preserve certain existing MODs. If it reports an unrecognized, partial, or incompatible image, stop and check the BIN; do not force the operation.
 - The CHAIN MOD changes the GP-200 firmware interface. **CHAIN can only be edited on the GP-200** it is not supported by the official editor. A new editor is WIP.
+- **You cand find precompiled versions just with Dual Chain and Scenes on the BIN folder**
 
 ## 2. Before you start
 
