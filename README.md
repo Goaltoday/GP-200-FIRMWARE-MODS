@@ -23,7 +23,7 @@ A special thank you to Thomas Bronwyn Phillips for all his discoveries and for t
 - Back up your presets.
 - Back up the official editor files before replacing any of them.
 ##
-## **How-to video https://youtu.be/Ce8PNgwUR4M**
+## **How-to use the html: https://youtu.be/2Who0_31P_A**
 
 ## 3. Open the HTML and load a BIN
 
@@ -59,9 +59,9 @@ In the same section, select a Factory AMP destination, choose its compatible Sou
    
 ### 4.2 DUAL CHAIN · parallel routing
 
-Enable **DUAL CHAIN** to add two signal paths, A and B, with a BLEND control. All DUAL CHAIN operation and editing described here take place on the GP-200:
-
 **Video example https://youtu.be/goAHSmzvuvo**
+
+Enable **DUAL CHAIN** to add two signal paths, A and B, with a BLEND control. All DUAL CHAIN operation and editing described here take place on the GP-200:
 
 1. On the GP-200, open **FX Loop** menu and select **CHAIN** to use parallel routing (rotate the knob bellow SERIES or PARALLEL).
   
@@ -74,11 +74,11 @@ Enable **DUAL CHAIN** to add two signal paths, A and B, with a BLEND control. Al
 
 ### 4.3 SCENES
 
+**Video example https://youtu.be/2ukD9Yc1_N8**
+
 Scenes allows to store four snapshots/scenes, A–D, for the current preset. 
 
 1. On the GP-200, open Footswich menu and rotate the PARAM knob, after user mode SCENE mode will apear.
-
-<img width="960" height="544" alt="USER" src="https://github.com/user-attachments/assets/3bebd21a-444d-4788-8a83-7c7f3f4dc171" />
 
 <img width="1280" height="960" alt="SCENE" src="https://github.com/user-attachments/assets/a83fe754-1e95-4862-ad4d-2ab92e75261d" />
 
