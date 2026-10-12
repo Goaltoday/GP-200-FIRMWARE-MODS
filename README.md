@@ -22,6 +22,8 @@ A special thank you to Thomas Bronwyn Phillips for all his discoveries and for t
 - Use a desktop browser and keep the downloaded ZIP intact until you have read its manifest and contents.
 - Back up your presets.
 - Back up the official editor files before replacing any of them.
+##
+## **How-to video https://youtu.be/Ce8PNgwUR4M**
 
 ## 3. Open the HTML and load a BIN
 
@@ -77,6 +79,9 @@ Scenes allows to store four snapshots/scenes, A–D, for the current preset.
 1. On the GP-200, open Footswich menu and rotate the PARAM knob, after user mode SCENE mode will apear.
 
 <img width="960" height="544" alt="USER" src="https://github.com/user-attachments/assets/3bebd21a-444d-4788-8a83-7c7f3f4dc171" />
+
+<img width="1280" height="960" alt="SCENE" src="https://github.com/user-attachments/assets/a83fe754-1e95-4862-ad4d-2ab92e75261d" />
+
 
 2. You can personalice FS1 to FS4 as usual, FS5 to FS8 are reserved.
 - Select and configure a preset.
