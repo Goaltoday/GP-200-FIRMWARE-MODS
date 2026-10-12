@@ -59,6 +59,8 @@ In the same section, select a Factory AMP destination, choose its compatible Sou
 
 Enable **DUAL CHAIN** to add two signal paths, A and B, with a BLEND control. All DUAL CHAIN operation and editing described here take place on the GP-200:
 
+**Video example https://youtu.be/goAHSmzvuvo**
+
 1. On the GP-200, open **FX Loop** menu and select **CHAIN** to use parallel routing (rotate the knob bellow SERIES or PARALLEL).
   
 <img width="960" height="544" alt="CHAIN" src="https://github.com/user-attachments/assets/8c149a10-41b5-4bb0-94ab-26479baccfb0" />
