@@ -84,15 +84,12 @@ Scenes allows to store four snapshots/scenes, A–D, for the current preset.
 
 ### 4.4 Effect assignments
 
-The effect assignment tools let you choose an algorithm for a supported destination in WAH, PRE, DIST, or EQ. **Load effects on PRE Block** provides the earlier PRE assignments; the expanded **Effect assignments** configurator adds a destination and algorithm selector for the wider catalog.
+The effect assignment tools let you choose an algorithm for a supported destination in WAH, PRE, DIST, or EQ. 
 
 - The configurator covers 80 physical destinations: 5 WAH, 31 PRE, 38 DIST, and 6 EQ. The catalog contains many destination/algorithm combinations, but these are options to test, not individually certified combinations. Use the GP-200 controls to configure and evaluate them.
 - A destination is an existing slot in a native block. Each physical block runs one algorithm at a time; multiple PRE destinations are alternatives and do not create additional PRE blocks.
-- WAH Hammy and DIST SnapTone destinations are protected. Delay and reverb recipes are available only on their original PRE destinations. Some options, including the Pure 4000 ms recipe, remain experimental.
 - Existing presets keep their stored parameter values when you replace an effect. Select another effect and return to the replacement if you need to initialize its defaults.
-- The G-Chorus cold-start correction applies only to G-Chorus assigned to DIST Green OD. It runs the effect’s original initializer before the first active audio after loading; this remains an experimental, narrowly scoped correction.
-- Expanded PRE configurations that do not fit the editor’s existing automatic metadata format use the exported `GP200_EFFECT_BANK.json`. Keep that file with the generated package.
-- The VST does not yet interpret generic WAH/DIST/EQ effect assignments.
+
 
 ## 5. Replace official-editor files for CAB, AMP, and PRE
 
@@ -115,6 +112,6 @@ Some generated ZIPs include replacement resources for the official GP-200 editor
 5. Do not disconnect or interrupt the pedal during the firmware update. Afterward, confirm that it starts normally and test each selected MOD.
 
 **Have fun and please send me all your bugs and ideas**
-
+https://www.facebook.com/share/v/1FkMth8dxY/
 
 
