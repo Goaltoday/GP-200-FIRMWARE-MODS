@@ -1,4 +1,4 @@
-# Custom_Firmware_0.3 — GP-200 README
+# Custom_Firmware_0.4 — GP-200 README
 
 > **Experimental modification.**
 >Please be aware this is expermimental and in beta. It shouldn't harm you GP200 but please use at you own risk.
@@ -8,6 +8,12 @@
 A special thank you to Thomas Bronwyn Phillips for all his discoveries and for the help he has provided throughout this project.
 
 ## 0. Changes
+
+**- V.0.4**
+-  **Native NAM A2 Lite** (read carefully the instructions)
+- Trails on patch mode.
+
+**- V.0.3**
 - SCENES.The scenes mode doesn't returns to stomp mode by default.
 - SCENES. Free use of footswitches(Scenes A to D and Capture).
 - EFFECTS MOD. New combinations of effects, including COMP and OCTA.
@@ -15,12 +21,13 @@ A special thank you to Thomas Bronwyn Phillips for all his discoveries and for t
 
 ## 1. What the HTML does
 
-`Custom_Firmware_0.3.html` is a browser-based firmware configurator. Open it on a computer, select a GP-200 firmware BIN, choose and configure MODs, then generate a ZIP containing the modified firmware and any accompanying files. The HTML itself is not installed on the pedal; the BIN inside the ZIP is the firmware image to install.
+`Custom_Firmware_0.4.html` is a browser-based firmware configurator. Open it on a computer, select a GP-200 firmware BIN, choose and configure MODs, then generate a ZIP containing the modified firmware and any accompanying files. The HTML itself is not installed on the pedal; the BIN inside the ZIP is the firmware image to install.
 
 - The generator supports GP-200 firmware versions **1.8.0 and 1.8.2** and modified firmwares. Use a BIN that matches the firmware profile you intend to prepare.
 - The generator may recognize and preserve certain existing MODs. If it reports an unrecognized, partial, or incompatible image, stop and check the BIN; do not force the operation.
 - The CHAIN MOD changes the GP-200 firmware interface. **CHAIN can only be edited on the GP-200** it is not supported by the official editor. A new editor is WIP.
-- **You cand find precompiled versions just with Dual Chain and Scenes on the BIN folder**
+- The GP200 editor will not recognize the NAM names, but the GP200 will.
+- **You can find precompiled versions just with Dual Chain and Scenes on the BIN folder**
 
 ## 2. Before you start
 
@@ -56,10 +63,11 @@ Open **Replace Factory CAB and AMP**, then **Configure CAB and AMP**. The list c
 
 A replacement is associated with the Factory CAB slot, so presets using that slot will use the replacement IR.
 
-- **Factory AMP → SnapTone/CLO(Up to 18 new snaptones)**
+- **Factory AMP → SnapTone/CLO(Up to 15 new snaptones)**
 
-In the same section, select a Factory AMP destination, choose its compatible Sound Clone/CLO file, enter a display name if desired, then click **Add Sound Clone**. Any of the 71 Factory AMP destinations can be selected, up to a total of **18 replacements** in one build (I will try to increase that number)
+In the same section, select a Factory AMP destination, choose its compatible Sound Clone/CLO file, enter a display name if desired, then click **Add Sound Clone**. Any of the 71 Factory AMP destinations can be selected, up to a total of **15 replacements** in one build (I will try to increase that number)
 
+    - Don't use the same AMP for the NAM.
     - AMP models not selected keep their original sound.
     - Follow the character limit shown on the page for the display name.
     - Model slots use PCM sample regions associated with Drum Machine banks that the firmware identifies as unused.
@@ -106,6 +114,18 @@ The effect assignment tools let you choose an algorithm for a supported destinat
 - A destination is an existing slot in a native block. Each physical block runs one algorithm at a time; multiple PRE destinations are alternatives and do not create additional PRE blocks.
 - Existing presets keep their stored parameter values when you replace an effect. Select another effect and return to the replacement if you need to initialize its defaults.
 
+### 4.5 Native NAM A2 
+It is possible to upload up to 5 NAM A2 files. This is only in this phase, I have a working app to upload "live" up to 63 NAM A2  files.
+
+- Prepare the NAM A2 file. **Only NAM A2 are supported**. The GP200 will play the Lite version but **native with no conversion.**
+- Choose 5 AMP slots that will be replaced by the NAM.
+- NAM uses about the 50% of the DSP budget, but it is enough for a normal chain of effects.
+- Be aware that are effects that use DSP even switched off.
+- **Be sure that you have not selected this effects on you patch:**
+ DIST:Snaptone, Empire OD, Revolt, Bass Hammer y Flagman Dist)
+ DLY:	Broken Delay e Ice Delay
+ RVB:	Tube Spring y Amp Spring
+- As we have no calibration I recommend INPUT=36 OUTPUT=64 to get the RAW sound of the VST plugin.
 
 ## 5. Replace official-editor files for CAB, AMP, and PRE
 

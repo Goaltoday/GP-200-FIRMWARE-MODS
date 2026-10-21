@@ -1,4 +1,4 @@
-# Custom_Firmware_0.2 — GP-200 README
+# Custom_Firmware_0.3 — GP-200 README
 
 > **Experimental modification.**
 >Please be aware this is expermimental and in beta. It shouldn't harm you GP200 but please use at you own risk.
@@ -7,9 +7,15 @@
 
 A special thank you to Thomas Bronwyn Phillips for all his discoveries and for the help he has provided throughout this project.
 
+## 0. Changes
+- SCENES.The scenes mode doesn't returns to stomp mode by default.
+- SCENES. Free use of footswitches(Scenes A to D and Capture).
+- EFFECTS MOD. New combinations of effects, including COMP and OCTA.
+
+
 ## 1. What the HTML does
 
-`Custom_Firmware_0.2.html` is a browser-based firmware configurator. Open it on a computer, select a GP-200 firmware BIN, choose and configure MODs, then generate a ZIP containing the modified firmware and any accompanying files. The HTML itself is not installed on the pedal; the BIN inside the ZIP is the firmware image to install.
+`Custom_Firmware_0.3.html` is a browser-based firmware configurator. Open it on a computer, select a GP-200 firmware BIN, choose and configure MODs, then generate a ZIP containing the modified firmware and any accompanying files. The HTML itself is not installed on the pedal; the BIN inside the ZIP is the firmware image to install.
 
 - The generator supports GP-200 firmware versions **1.8.0 and 1.8.2** and modified firmwares. Use a BIN that matches the firmware profile you intend to prepare.
 - The generator may recognize and preserve certain existing MODs. If it reports an unrecognized, partial, or incompatible image, stop and check the BIN; do not force the operation.
@@ -75,7 +81,7 @@ Enable **DUAL CHAIN** to add two signal paths, A and B, with a BLEND control. Al
 
 ### 4.3 SCENES
 
-**Video example https://youtu.be/2ukD9Yc1_N8**
+**Video example https://youtu.be/Mxq6-KZChpg**
 
 Scenes allows to store four snapshots/scenes, A–D, for the current preset. 
 
@@ -84,10 +90,12 @@ Scenes allows to store four snapshots/scenes, A–D, for the current preset.
 <img width="1280" height="960" alt="SCENE" src="https://github.com/user-attachments/assets/a83fe754-1e95-4862-ad4d-2ab92e75261d" />
 
 
-2. You can personalice FS1 to FS4 as usual, FS5 to FS8 are reserved.
+2. You can personalice FS1 to FS8 as usual.
+- Configure SCENE A to D on any FS you desire.
+- **Also configurae one FS Hold as Capture**
 - Select and configure a preset.
-- On the pedal, FS5–FS8 select Scenes A–D. To capture the current sound into the selected Scene, hold FS4 and press its Scene footswitch (FS5–FS8). The four Scene LEDs flash for about 500 ms when the capture completes, then return to showing the active Scene.
-- Then to store pressing **SAVE** on the GP200.
+- To capture the current sound into the selected Scene, hold the **Capture** footswitch for **2 seconds and then press** its **Scene A to D** footswitch. The four Scene LEDs flash for about 500 ms when the capture completes, then return to showing the active Scene.
+- Then to store pressing **SAVE** on the GP200. The first row of LED will flash in yellow if the proccess is completed.
 - You can change an effect or the chain from any Scene. When you STORE the preset, parameters for replaced blocks are applied across A–D. Unchanged blocks and each Scene’s individual ON/OFF states are preserved.
 
 ### 4.4 Effect assignments
