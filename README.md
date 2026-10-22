@@ -5,7 +5,7 @@
 
 ## Acknowledgements
 
-A special thank you to Thomas Bronwyn Phillips for all his discoveries and for the help he has provided throughout this project.
+A special thank you to Thomas (https://github.com/tntexplosivesltd) for all his discoveries and for the help he has provided throughout this project.
 
 ## 0. Changes
 
