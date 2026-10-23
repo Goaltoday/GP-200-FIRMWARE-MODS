@@ -1,4 +1,4 @@
-# Custom_Firmware_0.4 — GP-200 README
+# Custom_Firmware_0.5 — GP-200 README
 
 > **Experimental modification.**
 >Please be aware this is expermimental and in beta. It shouldn't harm you GP200 but please use at you own risk.
@@ -8,6 +8,11 @@
 A special thank you to Thomas Bronwyn Phillips for all his discoveries and for the help he has provided throughout this project.
 
 ## 0. Changes
+
+**- V.0.5**
+- DPS LOAD % indicator. You can see it on the top center of the screen when you choose an effect.
+- Updated trails on patch mode( you can change the chain blocks order and effects except delay and reverb ths shall keeep the same values, but on or off).
+- Updated scenes mode ( the base is the preset and you can activate/desactive 4 scenes, so it's like 5 scenes per patch)
 
 **- V.0.4**
 -  **Native NAM A2 Lite** (read carefully the instructions)
@@ -21,7 +26,7 @@ A special thank you to Thomas Bronwyn Phillips for all his discoveries and for t
 
 ## 1. What the HTML does
 
-`Custom_Firmware_0.4.html` is a browser-based firmware configurator. Open it on a computer, select a GP-200 firmware BIN, choose and configure MODs, then generate a ZIP containing the modified firmware and any accompanying files. The HTML itself is not installed on the pedal; the BIN inside the ZIP is the firmware image to install.
+`Custom_Firmware_0.5.html` is a browser-based firmware configurator. Open it on a computer, select a GP-200 firmware BIN, choose and configure MODs, then generate a ZIP containing the modified firmware and any accompanying files. The HTML itself is not installed on the pedal; the BIN inside the ZIP is the firmware image to install.
 
 - The generator supports GP-200 firmware versions **1.8.0 and 1.8.2** and modified firmwares. Use a BIN that matches the firmware profile you intend to prepare.
 - The generator may recognize and preserve certain existing MODs. If it reports an unrecognized, partial, or incompatible image, stop and check the BIN; do not force the operation.
@@ -102,10 +107,15 @@ Scenes allows to store four snapshots/scenes, A–D, for the current preset.
 - Configure SCENE A to D on any FS you desire.
 - **Also configurae one FS Hold as Capture**
 - Select and configure a preset.
-- To capture the current sound into the selected Scene, hold the **Capture** footswitch for **2 seconds and then press** its **Scene A to D** footswitch. The four Scene LEDs flash for about 500 ms when the capture completes, then return to showing the active Scene.
-- Then to store pressing **SAVE** on the GP200. The first row of LED will flash in yellow if the proccess is completed.
+- To capture the current sound into the selected Scene, hold the **Capture** footswitch for **2+ seconds and then press** its **Scene A to D** footswitch. The four Scene LEDs flash for about 500 ms when the capture completes, then return to showing the active Scene.
+- Then to store, **deselect the Scenes** and press **SAVE** on the GP200. The first row of LED will flash in yellow if the proccess is completed.
 - You can change an effect or the chain from any Scene. When you STORE the preset, parameters for replaced blocks are applied across A–D. Unchanged blocks and each Scene’s individual ON/OFF states are preserved.
-
+- Example of use:
+  * When activated no scene is selected. 
+  * Press Scene A → activate Scene A.
+  * Press Scene A again → return to the original saved preset state.
+  * Press Scene B while Scene A is active → switch directly to Scene B.
+ 
 ### 4.4 Effect assignments
 
 The effect assignment tools let you choose an algorithm for a supported destination in WAH, PRE, DIST, or EQ. 
