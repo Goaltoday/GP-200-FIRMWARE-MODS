@@ -17,6 +17,10 @@ Special thanks to [Thomas (tntexplosivesltd)](https://github.com/tntexplosiveslt
 
 ## 1. What's New — Changelog
 
+### Version 0.6.1
+
+- Corrected bug to activate drums.
+
 ### Version 0.6
 
 - Load up to **32 NAM A2 models** using the HTML loader.
