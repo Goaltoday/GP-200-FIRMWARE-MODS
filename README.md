@@ -1,5 +1,8 @@
 # Custom Firmware 0.6 — Valeton GP-200
 
+<img width="480" height="272" alt="custom6-startup" src="https://github.com/user-attachments/assets/0df64b3c-71ad-4ace-9ee1-f1697bec883b" />
+
+
 > **⚠️ Experimental firmware modification**
 >
 > This project is experimental and currently in beta. Although the modifications are not expected to damage your GP-200, they have not been tested in every possible configuration.
@@ -101,6 +104,9 @@ Before generating a custom firmware:
 ## 5. Using the MODs
 
 ### 5.1. Universal BLOCK
+
+<img width="1672" height="941" alt="BLOCKS" src="https://github.com/user-attachments/assets/5f252510-881a-4a0d-bbe5-5970833687d7" />
+
 
 It is possible to use any block to load a family of effects.
 
