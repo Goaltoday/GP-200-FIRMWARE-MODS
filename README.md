@@ -22,7 +22,7 @@ Special thanks to [Thomas (tntexplosivesltd)](https://github.com/tntexplosiveslt
 - Load up to **32 NAM A2 models** using the HTML loader.
 - **NAM BLOCK** added.
 - **Choose which effect family to use in each block**, allowing more flexible effect assignments.
-- Simplified HTML firmware patcher, including optional effect blocks, NAM loading, SnapTone replacement, custom IRs, and effect replacement.
+- Simplified HTML firmware patcher.
 - Updated **Trails in Patch Mode**:
   - The block order must remain unchanged.
   - You can change the effect family assigned to each block.
