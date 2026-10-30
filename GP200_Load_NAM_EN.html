@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GP-200 · Load NAM</title>
+<style>
+:root{color-scheme:dark;font:16px system-ui;background:#101315;color:#edf1ed}*{box-sizing:border-box}body{margin:0;padding:6vh 20px}main{max-width:660px;margin:auto;background:#1b2023;border:1px solid #343d41;border-radius:20px;padding:32px}small{color:#acc1b5;letter-spacing:.1em}h1{font-size:34px;margin:10px 0}p{line-height:1.6;color:#bdc8c8}label{display:block;margin:24px 0 8px;font-weight:600}input,select,button{font:inherit;border-radius:8px;padding:12px;border:1px solid #475359;background:#121719;color:inherit}input,select{width:100%}button{cursor:pointer}button:disabled{opacity:.4;cursor:default}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}#load{background:#b5eb8c;color:#13200d;border-color:#b5eb8c;font-weight:700;width:100%;margin:24px 0 10px}#status{white-space:pre-wrap;line-height:1.6;background:#121719;padding:16px;border-radius:8px;min-height:85px}a{color:#b5eb8c}footer{font-size:13px;color:#91a09f;margin-top:24px;line-height:1.6}input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid #b5eb8c;outline-offset:3px}
+</style>
+<main><small>GP-200 / MX43</small><h1>Load NAM</h1><p>Load a 48 kHz NAM A2 Lite model into one of the 32 slots on your pedalboard.</p><div class="actions"><button id="connect">Connect GP-200</button><button id="refresh" disabled>Refresh slots</button></div>
+<label for="slot">Destination slot</label><select id="slot"><option value="0">Connect to read installed models</option></select>
+<label for="file">A2 Lite model (.nam)</label><input id="file" type="file" accept=".nam,application/json">
+<label for="name">Name on the GP-200</label><input id="name" maxlength="16" placeholder="Up to 16 characters" autocomplete="off" spellcheck="false">
+<button id="load" disabled>Load NAM</button><div id="status" role="status" aria-live="polite">Connect the GP-200 via USB, close other editors, and allow MIDI / SysEx access when you click Connect.</div><p><a id="backup" hidden>Download backup for this upload</a></p>
+<footer>A slot selected in the current preset cannot be replaced, even when bypassed. The previous record is backed up in this browser before uploading. Keep this window open until verification finishes.</footer></main>
+<script>
+const CANONICAL = {
+  "layers": [
+    {
+      "input_size": 1,
+      "condition_size": 1,
+      "head": {
+        "out_channels": 1,
+        "kernel_size": 16,
+        "bias": true
+      },
+      "channels": 3,
+      "kernel_sizes": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        15,
+        15,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "dilations": [
+        1,
+        3,
+        7,
+        17,
+        41,
+        101,
+        239,
+        1,
+        3,
+        7,
+        17,
+        41,
+        101,
+        239,
+        1,
+        13,
+        1,
+        3,
+        7,
+        17,
+        41,
+        101,
+        239
+      ],
+      "activation": [
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        },
+        {
+          "type": "LeakyReLU",
+          "negative_slope": 0.01
+        }
+      ],
+      "bottleneck": 3,
+      "head1x1": {
+        "active": false,
+        "out_channels": 1,
+        "groups": 1
+      },
+      "layer1x1": {
+        "active": true,
+        "groups": 1
+      },
+      "groups_input": 1,
+      "groups_input_mixin": 1,
+      "conv_pre_film": {
+        "active": false,
+        "shift": true,
+        "groups": 1
+      },
+      "conv_post_film": {
+        "active": false,
+        "shift": true,
+        "groups": 1
+      },
+      "input_mixin_pre_film": {
+        "active": false,
+        "shift": true,
+        "groups": 1
+      },
+      "input_mixin_post_film": {
+        "active": false,
+        "shift": true,
+        "groups": 1
+      },
+      "activation_pre_film": {
+        "active": false,
+        "shift": true,
+        "groups": 1
+      },
+      "activation_post_film": {
+        "active": false,
+        "shift": true,
+        "groups": 1
+      },
+      "layer1x1_post_film": {
+        "active": false,
+        "shift": true,
+        "groups": 1
+      },
+      "head1x1_post_film": {
+        "active": false,
+        "shift": true,
+        "groups": 1
+      },
+      "gating_mode": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "secondary_activation": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "slimmable": null
+    }
+  ],
+  "head": null
+};
+'use strict';
+// Port of Protocol, Mx42Integration, A2LiteModel and Mx42NamCodec.
+const NAM = (() => {
+ const magic=[0x21,0x25,0x7e,0x47,0x50,0x2d,0x32];
+ const view=b=>new DataView(b.buffer,b.byteOffset,b.byteLength);
+ const u=(b,p)=>view(b).getUint32(p,true), put=(b,p,n)=>view(b).setUint32(p,n,true);
+ const assert=(ok,msg='Invalid response')=>{if(!ok)throw Error(msg);};
+ const equal=(a,b)=>a.length===b.length&&a.every((v,i)=>v===b[i]);
+ function crc(b){let c=0xffffffff;for(const v of b){c^=v;for(let k=0;k<8;k++)c=(c>>>1)^((c&1)?0xedb88320:0);}return (c^0xffffffff)>>>0;}
+ function frames(value){const b=new Uint8Array(value.length+4);view(b).setUint16(0,0x1009,true);view(b).setUint16(2,value.length,true);b.set(value,4);const out=[];for(let o=0;o<b.length;o+=183){const f=[0xf0,...magic,0x11,b.length&127,b.length>>7,o&127,o>>7];for(const v of b.slice(o,o+183))f.push(v>>4,v&15);f.push(0xf7);out.push(new Uint8Array(f));}return out;}
+ class Receiver {
+  reset(){this.b=null;this.at=0;}
+  constructor(){this.reset();}
+  accept(f){
+   if(f[0]!==0xf0||!equal(f.slice(1,8),magic))return null;
+   assert(f.length>=14&&f.at(-1)===0xf7&&(f.length-14)%2===0,'Truncated SysEx');
+   assert(f.slice(8,13).every(v=>v<128),'Invalid MIDI header');
+   const total=f[9]+128*f[10],offset=f[11]+128*f[12],n=(f.length-14)/2;
+   // editor_usb.c emits every MXE1 response with command 0x12.
+   // 0x11 is only the outbound query, never an accepted response.
+   if(f[8]!==0x12)return null;
+   assert(total>0&&total<=16383&&offset+n<=total,'Fragment out of range');
+   if(offset===0){this.b=new Uint8Array(total);this.at=0;}
+   assert(this.b&&this.b.length===total&&offset===this.at,'Duplicate or out-of-order fragments');
+   for(let i=0;i<n;i++){const hi=f[13+2*i],lo=f[14+2*i];assert(hi<16&&lo<16,'Invalid nibble');this.b[offset+i]=hi*16+lo;}
+   this.at+=n;if(this.at!==total)return null;
+   const b=this.b;this.reset();const records=[];
+   for(let p=0;p<b.length;){assert(p+4<=b.length,'Truncated TLV');const type=view(b).getUint16(p,true),size=view(b).getUint16(p+2,true);p+=4;assert(p+size<=b.length,'TLV out of range');records.push({type,b:b.slice(p,p+size)});p+=size;}return records;
+  }
+ }
+ function request(service,op,nonce,revision=0,a=0,b=0,payload=new Uint8Array()){
+  assert(nonce!==0&&payload.length<=1024);const v=new Uint8Array(32+payload.length);view(v).setUint16(0,0x584d,true);v[2]=service;v[3]=op;put(v,4,0x3145584d);put(v,8,nonce);view(v).setUint16(12,1,true);put(v,16,revision);put(v,20,a);put(v,24,b);put(v,28,payload.length);v.set(payload,32);return v;
+ }
+ function reply(records,service,op,nonce){
+  const hits=records.filter(({type,b})=>type===0x1009&&b.length>=32&&view(b).getUint16(0,true)===0x584d&&b[2]===service&&b[3]===op&&u(b,4)===0x3145584d&&u(b,8)===nonce);
+  if(!hits.length)return null;assert(hits.length===1);const b=hits[0].b;assert(view(b).getUint16(12,true)===1&&u(b,28)<=1024&&b.length===32+u(b,28),'Invalid MXE1 version/length');
+  return {status:view(b).getUint16(14,true),revision:u(b,16),a:u(b,20),b:u(b,24),payload:b.slice(32)};
+ }
+ function check(r){const errors=['','runtime not ready','invalid request','slot changed / stale session','slot selected, loaded, or device busy','invalid A2 Lite model','storage failure / uncertain result','storage recovery blocked'];assert(r.status===0,`GP-200: ${errors[r.status]||'error '+r.status}. No automatic retry.`);return r;}
+ function name(n){assert(/^[A-Za-z0-9 _-]{1,16}$/.test(n)&&n.trim().length>0,'Name: 1–16 ASCII letters, numbers, spaces, _ or -.');return n;}
+ function header(b,slot){assert(b.length===64,'Invalid NAM header');if(b.every(v=>v===0))return '';assert(u(b,0)===0x314d414e&&u(b,4)===slot&&u(b,12)===0x41324c31&&b.slice(48).every(v=>v===0),'Incompatible NAM header');const raw=b.slice(16,48),end=raw.indexOf(0);assert(end>=1&&end<=16&&raw.slice(end).every(v=>v===0),'Invalid name padding');return name(String.fromCharCode(...raw.slice(0,end)));}
+ function validate(b,slot){assert(b.length===7552);const n=header(b.slice(0,64),slot);if(!n){assert(b.every(v=>v===0));return;}assert(b.slice(7548).every(v=>v===0)&&crc(b.slice(64,7548))===u(b,8),'Invalid NAM CRC/padding');for(let p=64;p<7548;p+=4)assert(Number.isFinite(view(b).getFloat32(p,true)),'Non-finite weight');assert(view(b).getFloat32(7544,true)>0,'Invalid head_scale');}
+ function deep(a,b){if(a===b)return true;if(!a||!b||typeof a!=='object'||typeof b!=='object'||Array.isArray(a)!==Array.isArray(b))return false;const keys=Object.keys(a);return keys.length===Object.keys(b).length&&keys.every(k=>Object.hasOwn(b,k)&&deep(a[k],b[k]));}
+ function weights(doc,canonical){
+  function candidate(m){if(!m||m.architecture!=='WaveNet'||m.sample_rate!==48000||!m.config||Object.keys(m.config).length!==Object.keys(canonical).length+1||!Object.keys(canonical).every(k=>deep(m.config[k],canonical[k])))return null;
+   const hs=Math.fround(m.config.head_scale),w=m.weights;if(typeof m.config.head_scale!=='number'||!Number.isFinite(hs)||hs<=0||!Array.isArray(w)||w.length!==1871||!w.every(v=>typeof v==='number'&&Number.isFinite(Math.fround(v))))return null;
+   const f=w.map(Math.fround);if(f.at(-1)<=0||Math.abs(Math.fround(hs-f.at(-1)))>Math.fround(1e-6*Math.max(Math.abs(hs),Math.abs(f.at(-1)))))return null;return f;
+  }
+  const choices=doc.architecture==='SlimmableContainer'?(doc.config?.submodels||[]).map(c=>candidate(c.model)).filter(Boolean):[candidate(doc)].filter(Boolean);
+  assert(choices.length===1,'Exactly one compatible WaveNet A2 Lite model at 48 kHz with 1871 weights is required.');
+  const w=choices[0],ordered=w.slice(0,3);let at=3;
+  for(let layer=0;layer<23;layer++){const k=layer===14||layer===15?15:6;for(let t=0;t<k;t++)for(let i=0;i<3;i++)for(let o=0;o<3;o++)ordered.push(w[at+(o*3+i)*k+t]);at+=9*k;ordered.push(...w.slice(at,at+6));for(let i=0;i<3;i++)for(let o=0;o<3;o++)ordered.push(w[at+6+o*3+i]);ordered.push(...w.slice(at+15,at+18));at+=18;}
+  for(let t=0;t<16;t++)for(let i=0;i<3;i++)ordered.push(w[at+i*16+t]);ordered.push(...w.slice(at+48));assert(ordered.length===1871);const bytes=new Uint8Array(7484);ordered.forEach((v,i)=>view(bytes).setFloat32(4*i,v,true));return bytes;
+ }
+ function record(slot,n,w){assert(Number.isInteger(slot)&&slot>=0&&slot<32&&w.length===7484);name(n);const b=new Uint8Array(7552);put(b,0,0x314d414e);put(b,4,slot);put(b,8,crc(w));put(b,12,0x41324c31);b.set(new TextEncoder().encode(n),16);b.set(w,64);validate(b,slot);return b;}
+ function info(r,slot){check(r);assert(r.a===7552&&r.b<=7,'Invalid INFO');return {slot,name:header(r.payload,slot),revision:r.revision,flags:r.b};}
+ async function read(call,info){const b=new Uint8Array(7552);for(let p=0;p<b.length;p+=1024){const r=check(await call(5,5,info.revision,info.slot,p));assert(r.revision===info.revision&&r.a===info.slot&&r.b===p&&r.payload.length===Math.min(1024,b.length-p),'Invalid READ session/cursor');b.set(r.payload,p);}assert(crc(b)===info.revision,'Invalid full-read CRC');validate(b,info.slot);return b;}
+ async function upload(call,slot,record,backup,stage){
+  validate(record,slot);const i=info(await call(5,0,0,slot),slot);assert(i.flags===0,'Slot in use. Change the model selected on the GP-200, even if it is bypassed.');
+  const previous=await read(call,i);await backup(previous,record,i);
+  const begin=check(await call(5,1,i.revision,slot,7552));assert(begin.revision===i.revision&&begin.a===7552&&begin.b!==0&&begin.payload.length===0,'Invalid BEGIN');const token=begin.b;
+  for(let p=0;p<record.length;p+=1024){const part=record.slice(p,p+1024),r=check(await call(5,2,i.revision,p,token,part));assert(r.revision===i.revision&&r.a===p+part.length&&r.b===token&&r.payload.length===0,'Invalid CHUNK');await stage('staging',p+part.length);}
+  await stage('commit-sent-or-uncertain',7552);const r=check(await call(5,3,i.revision,slot,token));
+  assert(r.revision===crc(record)&&r.a===7552&&r.b===slot&&equal(r.payload,record.slice(0,64)),'COMMIT does not confirm the exact record. Do not repeat the upload.');
+  await stage('readback',7552);const actual=await read(call,{slot,revision:crc(record)});assert(equal(actual,record),'Final readback differs. Do not repeat the upload.');await stage('verified',7552);
+ }
+ return {view,u,put,assert,equal,crc,frames,Receiver,request,reply,check,name,header,validate,weights,record,info,read,upload};
+})();
+if(typeof module!=='undefined')module.exports=NAM;
+
+'use strict';
+const $=id=>document.getElementById(id);
+let midi,input,output,pending,busy=false,connected=false,uncertain=false,slots=[],job=null,db;
+const receiver=new NAM.Receiver();
+const pause=ms=>new Promise(r=>setTimeout(r,ms));
+function status(s){$('status').textContent=s;}
+function update(){for(const b of document.querySelectorAll('button,input,select'))b.disabled=busy;$('refresh').disabled=busy||!connected;$('load').disabled=busy||!connected||uncertain||!$('file').files.length||!slots[$('slot').value]||slots[$('slot').value].flags!==0;$('connect').disabled=busy||connected;}
+async function run(fn){if(busy)return;busy=true;update();try{await fn();}catch(e){status(e.message+(uncertain?'\nThe write may have completed. Do not repeat the upload; keep the backup and check the slot.':''));}finally{busy=false;update();}}
+function receive(e){if(!pending)return;try{const records=receiver.accept(new Uint8Array(e.data).filter(v=>v<0xf8));if(!records)return;const r=NAM.reply(records,pending.service,pending.op,pending.nonce);if(r)pending.resolve(r);}catch(e){pending.reject(e);}}
+async function call(service,op,revision=0,a=0,b=0,payload=new Uint8Array()){
+ NAM.assert(!pending&&connected&&input.state==='connected'&&output.state==='connected','MIDI connection unavailable');
+ let nonce;do{nonce=crypto.getRandomValues(new Uint32Array(1))[0];}while(!nonce);
+ receiver.reset();const value=NAM.request(service,op,nonce,revision,a,b,payload);
+ let timer;const result=new Promise((resolve,reject)=>{pending={service,op,nonce,resolve,reject};timer=setTimeout(()=>reject(Error(`No response (${service}/${op}). No automatic retry.`)),op===3&&service===5?15000:3000);});
+ // Attach rejection handling immediately, even while sending fragments.
+ result.catch(()=>{});
+ try{for(const frame of NAM.frames(value)){output.send(frame);await pause(5);}return await result;}finally{clearTimeout(timer);pending=null;receiver.reset();}
+}
+function openDb(){return new Promise((resolve,reject)=>{const req=indexedDB.open('gp200-nam-loader',1);req.onupgradeneeded=()=>req.result.createObjectStore('jobs',{keyPath:'id'});req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(Error('Could not open local backup storage.'));});}
+async function saveJob(){db??=await openDb();await new Promise((resolve,reject)=>{const tx=db.transaction('jobs','readwrite');tx.objectStore('jobs').put(job);tx.oncomplete=resolve;tx.onerror=()=>reject(Error('Could not save the backup/status. Upload stopped.'));tx.onabort=tx.onerror;});}
+let backupUrl;
+function backupLink(){if(backupUrl)URL.revokeObjectURL(backupUrl);backupUrl=URL.createObjectURL(new Blob([JSON.stringify(job,null,2)],{type:'application/json'}));$('backup').href=backupUrl;$('backup').download=`GP200-NAM-${String(job.slot+1).padStart(2,'0')}-${job.id}.json`;$('backup').hidden=false;}
+async function refresh(){status('Reading all 32 slots…');const next=[];for(let s=0;s<32;s++){next.push(NAM.info(await call(5,0,0,s),s));status(`Reading slots… ${s+1}/32`);}slots=next;const selected=$('slot').value;$('slot').replaceChildren(...slots.map(i=>{const o=document.createElement('option');o.value=i.slot;o.textContent=`${String(i.slot+1).padStart(2,'0')} · ${i.name||'Empty'}${i.flags?' · '+reason(i.flags):''}`;return o;}));$('slot').value=selected||'0';status('Read all 32 slots from the GP-200. Choose a destination and NAM file.');}
+function reason(f){return f&1?'selected in preset':f&2?'still loaded':f&4?'device busy':'available';}
+$('connect').onclick=()=>run(async()=>{
+ NAM.assert(window.isSecureContext&&navigator.requestMIDIAccess,'Web MIDI is unavailable. Open this HTML in Chrome or Edge and allow MIDI / SysEx access. If local files are blocked, this same HTML can be served from localhost.');
+ midi=await navigator.requestMIDIAccess({sysex:true});NAM.assert(midi.sysexEnabled,'MIDI permission with SysEx is required.');
+ const match=p=>/^GP[- ]?200(?:\b|$)/i.test(p.name||'');const ins=[...midi.inputs.values()].filter(match),outs=[...midi.outputs.values()].filter(match);
+ NAM.assert(ins.length===1&&outs.length===1,'Exactly one GP-200 MIDI input and output are required. Connect USB and close other editors.');
+ input=ins[0];output=outs[0];await input.open();await output.open();input.onmidimessage=receive;connected=true;
+ midi.onstatechange=()=>{if(input.state!=='connected'||output.state!=='connected'){connected=false;pending?.reject(Error('GP-200 disconnected'));status('GP-200 disconnected. Reconnect the device and click Connect.');update();}};
+ try{const r=NAM.check(await call(0,0)),p=r.payload;NAM.assert(p.length===32&&NAM.u(p,0)===1&&(NAM.u(p,4)&1536)===1536&&NAM.u(p,8)===32&&NAM.u(p,12)===8&&NAM.u(p,16)===4144&&NAM.u(p,20)===1024&&NAM.u(p,24)===12&&NAM.u(p,28)===0x3149584d,'The firmware does not provide the required NAM32 protocol with recovery protection.');await refresh();}
+ catch(e){connected=false;input.onmidimessage=null;await input.close();await output.close();throw e;}
+});
+$('refresh').onclick=()=>run(refresh);
+$('slot').onchange=()=>{const i=slots[$('slot').value];status(i?.flags?`Slot ${i.slot+1}: ${reason(i.flags)}. Select a different model on the pedalboard to free this slot.`:'Destination available.');update();};
+$('file').onchange=()=>{const f=$('file').files[0];if(f)$('name').value=f.name.replace(/\.nam$/i,'').replace(/[^A-Za-z0-9 _-]/g,'_').slice(0,16).trim();update();};
+$('load').onclick=()=>run(async()=>{
+ const file=$('file').files[0],slot=Number($('slot').value);NAM.assert(file&&file.size>0&&file.size<=8*1024*1024,'NAM: maximum size is 8 MiB.');
+ const source=await file.text(),w=NAM.weights(JSON.parse(source),CANONICAL),record=NAM.record(slot,$('name').value,w);
+ if(slots[slot].name&&!confirm(`Replace NAM ${slot+1} · ${slots[slot].name} with ${$('name').value}? Presets using this global slot will use the new model.`))return;
+ status('Checking destination and backing up the previous record…');let verified=false;
+ await NAM.upload(call,slot,record,async(previous,next,info)=>{
+  job={id:crypto.randomUUID(),utc:new Date().toISOString(),slot,sourceName:file.name,source,previous:Array.from(previous),record:Array.from(next),info,stage:'backup',automaticRetry:false};await saveJob();backupLink();
+ },async(stage,count)=>{
+  if(stage==='commit-sent-or-uncertain'){job.stage=stage;await saveJob();uncertain=true;}
+  else if(stage==='verified'){verified=true;uncertain=false;job.stage=stage;await saveJob();}
+  else {job.stage=stage;await saveJob();}
+  backupLink();status(stage==='staging'?`Uploading NAM… ${count}/7552`:stage==='readback'?'Verifying full readback…':stage==='verified'?'NAM uploaded and full readback verified.':'Writing to the GP-200…');
+ });
+ try{await refresh();status('NAM uploaded and full readback verified.');}catch(e){if(verified)throw Error('NAM uploaded and verified; could not refresh the slot list. Do not upload it again. '+e.message);throw e;}
+});
+window.addEventListener('beforeunload',e=>{if(busy){e.preventDefault();e.returnValue='';}});
+update();
+
+</script>
+</html>
