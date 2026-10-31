@@ -17,6 +17,11 @@ Special thanks to [Thomas (tntexplosivesltd)](https://github.com/tntexplosiveslt
 
 ## 1. What's New — Changelog
 
+
+### Version 0.6.2
+
+- Corrected bug on stomp mode
+
 ### Version 0.6.1
 
 - Corrected bug to activate drums.
