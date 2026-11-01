@@ -18,6 +18,11 @@ Special thanks to [Thomas (tntexplosivesltd)](https://github.com/tntexplosiveslt
 ## 1. What's New — Changelog
 
 
+### Version 0.6.3
+
+- Corrected bug on the EXP pedal.Scene changes now preserve the live values of parameters controlled by an active expression pedal. 
+
+
 ### Version 0.6.2
 
 - Corrected bug on stomp mode
