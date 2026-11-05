@@ -1,4 +1,4 @@
-# Custom Firmware 0.6 — Valeton GP-200
+# Custom Firmware 0.7 — Valeton GP-200
 
 <img width="480" height="272" alt="custom6-startup" src="https://github.com/user-attachments/assets/0df64b3c-71ad-4ace-9ee1-f1697bec883b" />
 
