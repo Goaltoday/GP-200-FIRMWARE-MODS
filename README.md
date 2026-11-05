@@ -17,6 +17,11 @@ Special thanks to [Thomas (tntexplosivesltd)](https://github.com/tntexplosiveslt
 
 ## 1. What's New — Changelog
 
+### Version 0.7
+
+- Reduced gap between preset on universal block mod.
+- Reduced noise "POP" when changing between NAM files.
+
 
 ### Version 0.6.3
 
