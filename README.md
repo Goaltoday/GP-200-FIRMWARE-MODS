@@ -17,6 +17,12 @@ Special thanks to [Thomas (tntexplosivesltd)](https://github.com/tntexplosiveslt
 
 ## 1. What's New — Changelog
 
+
+### Version 0.7.1
+
+- Corrected bug on the scene MOD.
+
+
 ### Version 0.7
 
 - Reduced gap between preset on universal block mod.
