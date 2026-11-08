@@ -18,6 +18,10 @@ Special thanks to [Thomas (tntexplosivesltd)](https://github.com/tntexplosiveslt
 ## 1. What's New — Changelog
 
 
+### Version 0.7.2
+
+- QoL. Now pressing the effects block buttons go to the configuration menu of the block in that order (not the type of block) 
+
 ### Version 0.7.1
 
 - Corrected bug on the scene MOD.
