@@ -33,6 +33,12 @@ Special thanks to [Thomas (tntexplosivesltd)](https://github.com/tntexplosiveslt
 ## 1. What's New — Changelog
 
 
+### Version 0.7.4
+
+- Corrected EXP behavior. Bug https://github.com/Goaltoday/GP-200-FIRMWARE-MODS/issues/15 and toggle ON/OFF effects on EXP pedal.
+- Corrected NO CAB OFF and CHAIN MOD. Bug https://github.com/Goaltoday/GP-200-FIRMWARE-MODS/issues/16
+
+
 ### Version 0.7.3
 
 - Stock Module Buttons behaviour. Press to enter the Edit Settings menu of module,hold for module on/off. Short press will cycle through all the blocks with that type.
