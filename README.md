@@ -33,7 +33,7 @@ Special thanks to [Thomas (tntexplosivesltd)](https://github.com/tntexplosiveslt
 ## 1. What's New — Changelog
 
 
-### Version 0.7.4
+### Version 0.7.5
 - Corrected global tap tempo BUG.
 - Option to select footswitch colors.
 
@@ -319,11 +319,11 @@ These values are recommended as a starting point for reproducing the raw sound o
 ---
 
 ### 5.6. Footswitch colors
-1.Open Global → Footswitch on the GP-200. 
-2.On any mode, turn the third small knob (Page) to the right past Dual FS to **LED Colors**.
-3.Use the first small knob or press FS1–FS8 to select a footswitch.
-4.Turn the second small knob to choose and preview a color. Choose Default to restore the original color.
-5.Press PARA to save or BACK to cancel.
+1. Open Global → Footswitch on the GP-200.
+2. On any mode, turn the third small knob (Page) to the right past Dual FS to **LED Colors**.
+3. Use the first small knob or press FS1–FS8 to select a footswitch.
+4. Turn the second small knob to choose and preview a color. Choose Default to restore the original color.
+5. Press PARA to save or BACK to cancel.
 
 
 
